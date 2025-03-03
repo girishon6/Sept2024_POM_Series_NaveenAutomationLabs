@@ -13,7 +13,7 @@ import com.qa.opencart.constants.AppError;
 
 public class HomePageTest extends BaseTest
 {
-	private static final String Priority = null;
+	//private static final String Priority = null;
 
 	@BeforeClass
 	public void homePageSetup()
@@ -52,8 +52,8 @@ public class HomePageTest extends BaseTest
 		return new Object[][] 
 		{
 			
-			{"macbook",4},
-			{"imac",2},
+			{"macbook",3},
+			{"imac",1},
 			{"samsung",2},
 			{"canon",1},
 			{"airtel",0}

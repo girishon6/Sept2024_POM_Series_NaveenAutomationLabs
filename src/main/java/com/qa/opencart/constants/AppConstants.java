@@ -9,12 +9,17 @@ public class AppConstants {
 	
 	
 	
-	public final static String LOGIN_PAGE_TITLE ="Account Login1";
+	public final static String LOGIN_PAGE_TITLE ="Account Login";
 	public final static String LOGIN_PAGE_URL_FRACTION ="route=account/login";
 	
 	public final static String HOME_PAGE_TITLE="My Account";
 	public final static String HOME_PAGE_URL_FRACTION ="route=account/account";
 	public static final String CONFIG_PROP_FILE_PATH = "./src/test/resources/config/config.properties";
+	public static final String CONFIG_QA_PROP_FILE_PATH = "./src/test/resources/config/qa.config.properties";
+	public static final String CONFIG_DEV_PROP_FILE_PATH = "./src/test/resources/config/dev.config.properties";
+	public static final String CONFIG_STAGE_PROP_FILE_PATH = "./src/test/resources/config/stage.config.properties";
+	public static final String CONFIG_UAT_PROD_FILE_PATH = "./src/test/resources/config/uat.config.properties";
+	
 	
 	
 

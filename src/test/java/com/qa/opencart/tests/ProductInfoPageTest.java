@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.qa.opencart.base.BaseTest;
+import com.qa.opencart.util.ExcelUtil;
 
 public class ProductInfoPageTest extends BaseTest {
 	
@@ -39,6 +40,14 @@ public class ProductInfoPageTest extends BaseTest {
 	}
 	
 	@DataProvider
+	public Object[][] getProductImageSheetData()
+	{
+		Object[][] productData=ExcelUtil.getTestData("product");
+		return productData;
+	}
+	
+	
+	@DataProvider
 	public Object[][] getProductImageData()
 	{
 		return new Object[][] {
@@ -49,13 +58,13 @@ public class ProductInfoPageTest extends BaseTest {
 	}
 	
 	
-	@Test(dataProvider="getProductImageData")
-	public void productImagesCountTest(String searchKey, String productName, int imgCount)
+	@Test(dataProvider="getProductImageSheetData")
+	public void productImagesCountTest(String searchKey, String productName, String imgCount)
 	{
 		sp=hp.doSearch(searchKey);
 		pi=sp.selectProduct(productName);
 		int actualProductImageCount=pi.getProductImagesCount();
-		Assert.assertEquals(actualProductImageCount,imgCount);
+		Assert.assertEquals(actualProductImageCount,Integer.parseInt(imgCount));
 		
 	}
 	
