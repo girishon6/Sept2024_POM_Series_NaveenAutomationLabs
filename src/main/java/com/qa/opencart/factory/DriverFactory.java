@@ -101,7 +101,7 @@ public class DriverFactory {
 				break;
 			default:
 				System.out.println("Env name is: "+envName+" Please pass the correct environment name: ");
-				throw new FrameworkException("==Invalid environmet==");
+				//throw new FrameworkException("==Invalid environmet==");
 				
 				}
 			}
