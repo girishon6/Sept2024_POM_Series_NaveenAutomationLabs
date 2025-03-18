@@ -3,12 +3,15 @@ package com.qa.opencart.factory;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.exception.FrameworkException;
@@ -21,25 +24,77 @@ public class DriverFactory {
 	public static String highlight;
 
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+	
+	
+	private void initRemoteDriver(String browserName)
+	{
+		System.out.println("Browser Name: "+browserName);
+		try {
+		switch (browserName.trim().toLowerCase()) {
+		case "chrome":
+			tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.getChromeOptions()));
+			break;
+		case "firefox":
+			tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.getFirefoxOptions()));
+			break;
+		case "edge":
+			tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.getEdgeOptions()));
+			break;
+		default:
+			break;
+		}
+		
+	}catch (MalformedURLException e)
+		{
+			e.printStackTrace();
+		}
+		}
 
 	public WebDriver initDriver(Properties prop) {
 		String browserName = prop.getProperty("browser");
 		System.out.println("Browser Name is ==>" + browserName);
 		highlight = prop.getProperty("highlight");
 		optionsManager = new OptionsManager(prop);
+		
+		boolean remoteExecution=Boolean.parseBoolean(prop.getProperty("remote"));
 
 		switch (browserName.trim().toLowerCase()) {
 		case "chrome":
-			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
-			// driver = new ChromeDriver(optionsManager.getChromeOptions());
+			
+			if(remoteExecution) 
+			{
+				//run on remote/grid
+				initRemoteDriver("chrome");
+			}
+			else
+			{
+				//local execution
+				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+			}
 			break;
 		case "firefox":
-			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
-			// driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+			if(remoteExecution) 
+			{
+				//run on remote/grid
+				initRemoteDriver("firefox");
+			}
+			else
+			{
+				tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+				// driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+			}
 			break;
 		case "edge":
+			if(remoteExecution) 
+			{
+				//run on remote/grid
+				initRemoteDriver("edge");
+			}
+			else
+			{
 			tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
 			// driver = new EdgeDriver(optionsManager.getEdgeOptions());
+			}
 			break;
 
 		default:

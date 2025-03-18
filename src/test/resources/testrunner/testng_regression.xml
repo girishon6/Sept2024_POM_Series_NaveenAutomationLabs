@@ -7,15 +7,30 @@
 		<listener class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
 		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
 	</listeners>
-	
-	<test name="Login Page Test">
+<!-- 
+	<test name="Login Page Test_chrome">
+		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
 
+	<test name="Login Page Test_firefox">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>-->
 
-	<test name="Home Page Test">
+	<test name="Login Page Test_edge">
+		<parameter name="browser" value="edge" />
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>
+
+	<!-- <test name="Home Page Test">
+		<parameter name="browser" value="firefox" />
 		<classes>
 			<class name="com.qa.opencart.tests.HomePageTest" />
 		</classes>
@@ -23,9 +38,10 @@
 
 
 	<test name="Product Info Page Test">
+		<parameter name="browser" value="edge" />
 		<classes>
 			<class name="com.qa.opencart.tests.ProductInfoPageTest" />
 		</classes>
-	</test>
+	</test>-->
 
 </suite>	

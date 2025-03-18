@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.opencart.factory.DriverFactory;
@@ -29,11 +30,17 @@ public class BaseTest {
 	protected ProductInfoPage pi;
 	protected CommonsPage commonsPage;
 	
+	@Parameters({"browser"})
 	@BeforeTest
-	public void setUp()
+	public void setUp(String browserName)
 	{
 		df=new DriverFactory();
 		prop=df.initProp();
+		
+		if(browserName!=null)
+		{
+			prop.setProperty("browser", browserName);
+		}
 		driver=df.initDriver(prop);
 		lp=new LoginPage(driver);
 		commonsPage=new CommonsPage(driver);
