@@ -8,37 +8,54 @@
 		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
 	</listeners>
 
-	<test name="Login Page Test_chrome">
+	<test name="Login Page Test_chrome_123">
 		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="123.0"/>
+		<parameter name="testname" value="Login page test"/>
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>
+	
+	<test name="Login Page Test_chrome_113">
+		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="113.0"/>
+		<parameter name="testname" value="Login page test"/>
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
 
-	<test name="Login Page Test_firefox">
+	<test name="Login Page Test_firefox_105">
 		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="105.0"/>
+		<parameter name="testname" value="Login page test"/>
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-<!-- 
-	<test name="Login Page Test_edge">
+ 
+<!-- <test name="Login Page Test_edge">
 		<parameter name="browser" value="edge" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
-	</test>-->
+	</test> -->
 
-	 <test name="Home Page Test">
+	 <test name="Home Page Test_100">
 		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="100.0"/>
+		<parameter name="testname" value="Home Page test"/>
 		<classes>
 			<class name="com.qa.opencart.tests.HomePageTest" />
 		</classes>
 	</test>
 
 
-	<test name="Product Info Page Test">
+	<test name="Product Info Page Test_124">
 		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="124.0"/>
+		<parameter name="testname" value="Product Info page test"/>
 		<classes>
 			<class name="com.qa.opencart.tests.ProductInfoPageTest" />
 		</classes>
