@@ -1,4 +1,3 @@
-
 package com.qa.opencart.pages;
 
 import org.openqa.selenium.By;
@@ -10,6 +9,7 @@ public class ConflictResolve {
 	
 	public void LoginPage() {
 		System.out.println("ConflictResolveByGirish");
-	}
 
+
+}
 }
